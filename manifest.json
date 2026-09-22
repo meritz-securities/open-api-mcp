@@ -1,0 +1,60 @@
+{
+  "manifest_version": "0.2",
+  "name": "meritz-open-api",
+  "display_name": "메리츠증권 Open API",
+  "version": "0.3.1",
+  "description": "메리츠증권 계좌의 시세·잔고·주문을 MCP 도구로 호출합니다.",
+  "long_description": "국내·해외 시세와 계좌 잔고를 조회하고 주문·환전을 전송합니다. 호출 대상은 운영 서버이고 앱키에 묶인 계좌는 실계좌입니다. 기본값은 조회 전용이며, 주문·환전은 이 설정을 꺼야 열립니다. 열더라도 미리보기에서 받은 확인 토큰이 있어야 전송됩니다. 실시간(웹소켓)은 이 서버가 다루지 않습니다.",
+  "author": { "name": "메리츠증권" },
+  "homepage": "https://github.com/meritz-securities/open-api-mcp",
+  "documentation": "https://github.com/meritz-securities/open-api-mcp#readme",
+  "license": "MIT",
+  "privacy_policies": ["https://github.com/meritz-securities/open-api-mcp/blob/main/DISCLAIMER.md"],
+  "keywords": ["meritz", "open-api", "trading", "stock", "korea"],
+  "server": {
+    "type": "python",
+    "entry_point": "meritz/server.py",
+    "mcp_config": {
+      "command": "uvx",
+      "args": ["--from", "${__dirname}", "meritz-mcp"],
+      "env": {
+        "MERITZ_APP_KEY": "${user_config.app_key}",
+        "MERITZ_APP_SECRET": "${user_config.app_secret}",
+        "MERITZ_READ_ONLY": "${user_config.read_only}"
+      }
+    }
+  },
+  "user_config": {
+    "app_key": {
+      "type": "string",
+      "title": "App Key",
+      "description": "개발자 포털(https://openapi.imeritz.com)에서 발급받은 앱키입니다.",
+      "required": true,
+      "sensitive": true
+    },
+    "app_secret": {
+      "type": "string",
+      "title": "App Secret",
+      "description": "앱키와 함께 발급받은 시크릿입니다.",
+      "required": true,
+      "sensitive": true
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "조회 전용으로 사용",
+      "description": "켜 두면 주문과 환전이 전송되지 않습니다. 기본값은 켜짐입니다.",
+      "default": true,
+      "required": false
+    }
+  },
+  "tools": [
+    { "name": "meritz_account", "description": "잔고·예수금·평가·거래내역" },
+    { "name": "meritz_market", "description": "국내주식 시세·호가·체결" },
+    { "name": "meritz_overseas_market", "description": "해외주식 시세·호가·체결" },
+    { "name": "meritz_trading", "description": "주문·정정·취소·주문내역" },
+    { "name": "meritz_forex", "description": "환율·환전" },
+    { "name": "meritz_reference", "description": "거래소 등 참조 정보" },
+    { "name": "meritz_info", "description": "서버 설정과 카탈로그 요약" }
+  ],
+  "compatibility": { "runtimes": { "python": ">=3.11" } }
+}

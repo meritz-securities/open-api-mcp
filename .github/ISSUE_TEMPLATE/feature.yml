@@ -1,0 +1,72 @@
+name: 이런 기능이 있었으면 합니다
+description: 새로운 도구나 개선할 점을 제안해 주십시오.
+labels:
+- enhancement
+body:
+- type: markdown
+  attributes:
+    value: |
+      제안하시기 전에 두 가지만 알려 드립니다.
+
+      - **주문·환전의 두 단계 확인 절차는 끄는 설정이 없습니다.** 이 절차를 건너뛰거나
+        자동으로 확인하는 기능은 받지 않습니다.
+      - **실시간(웹소켓)은 이 서버에서 다루지 않습니다.** MCP 가 요청·응답 모델이라
+        구독 스트림과 맞지 않기 때문입니다. 실시간 코드가 필요하시면
+        [open-api-codegen-mcp](https://github.com/meritz-securities/open-api-codegen-mcp) 를 써 주십시오.
+
+      API 자체에 새 기능이 필요하신 경우에는 이곳이 아니라 개발자 포털로 보내 주십시오.
+- type: textarea
+  id: problem
+  attributes:
+    label: 어떤 점이 아쉬우셨습니까
+    description: 에이전트에게 무엇을 시키려다 막히셨는지 적어 주십시오.
+  validations:
+    required: true
+- type: textarea
+  id: proposal
+  attributes:
+    label: 어떻게 되면 좋겠습니까
+  validations:
+    required: true
+- type: dropdown
+  id: tool
+  attributes:
+    label: 어느 도구와 관련이 있습니까
+    options:
+    - meritz_account — 잔고·예수금·평가·거래내역
+    - meritz_market — 국내주식 시세·호가·체결
+    - meritz_overseas_market — 해외주식 시세·호가·체결
+    - meritz_trading — 주문·정정·취소·주문내역
+    - meritz_forex — 환율·환전
+    - meritz_reference — 참조 정보
+    - meritz_info — 서버·설정 정보
+    - 설치·설정에 관한 것입니다
+    - 새로운 도구가 필요합니다
+  validations:
+    required: true
+- type: dropdown
+  id: client
+  attributes:
+    label: 어느 클라이언트에서 쓰고 계십니까
+    options:
+    - Claude Desktop
+    - Claude Code
+    - Cursor
+    - VS Code
+    - Codex CLI
+    - 그 밖의 MCP 클라이언트
+  validations:
+    required: false
+- type: checkboxes
+  id: checks
+  attributes:
+    label: 확인해 주십시오
+    options:
+    - label: 비슷한 제안이 이미 올라와 있는지 찾아보았습니다.
+      required: false
+    - label: 주문·환전의 확인 절차를 건너뛰자는 제안이 아닙니다.
+      required: true
+    - label: 이 글에 앱키·시크릿·접근토큰·계좌번호를 넣지 않았습니다.
+      required: true
+    - label: 계좌·주문·체결에 관한 문의가 아니라, 이 저장소의 코드나 문서에 관한 것입니다.
+      required: true
