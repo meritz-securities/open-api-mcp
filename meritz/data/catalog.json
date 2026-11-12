@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22",
+ "generated": "2026-10-28",
  "source": "메리츠증권 개발자 포털 등록 명세",
  "groups": [
   "OAuth 인증",
@@ -8049,7 +8049,7 @@
       "location": "query",
       "depth": 0,
       "child": false,
-      "description": "시장 구분입니다.<br/>\"J\": KRX<br/>\"NJ\": 대체거래소(NXT)<br/>\"TJ\": KRX + NXT 통합<br/>\"TJ\" 로 조회해도 \"J\"(KRX)와 같은 자료가 내려옵니다.<br/><b>위 세 값만 넣으십시오.</b> (query string)"
+      "description": "시장 구분입니다.<br/>\"J\": KRX<br/>\"NJ\": 대체거래소(NXT)<br/>\"TJ\": KRX + NXT 통합<br/><br/><b>위 세 값만 넣으십시오.</b> (query string)"
      },
      {
       "name": "iscd",
@@ -8361,7 +8361,7 @@
       "location": "query",
       "depth": 0,
       "child": false,
-      "description": "시장 구분입니다. \"J\"(KRX)를 넣으십시오. (query string)"
+      "description": "\"J\": KRX<br/>\"NJ\": 대체거래소(NXT)<br/>\"TJ\": KRX + NXT 통합 (query string)"
      },
      {
       "name": "iscd",
